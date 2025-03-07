@@ -1,11 +1,7 @@
 import styles from "./Feedback.module.css";
 import Notification from "../Notification/Notification";
 
-export default function Feedback({ feedback }) {
-  const totalFeedback = feedback.good + feedback.neutral + feedback.bad;
-  const positivePercentage =
-    totalFeedback > 0 ? Math.round((feedback.good / totalFeedback) * 100) : 0;
-
+export default function Feedback({ feedback, totalFeedback, positivePercentage }) {
   return (
     <div className={styles.stats}>
       <h2>Feedback Statistics</h2>
