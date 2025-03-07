@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Description from "../Description/Description";
 import Feedback from "../Feedback/Feedback";
 import Options from "../Options/Options";
@@ -19,16 +19,23 @@ export default function App() {
     }));
   };
 
-  // **Функція скидання фідбеку**
+  // Функція для скидання фідбеку
   const resetFeedback = () => {
     setFeedback({ good: 0, neutral: 0, bad: 0 });
   };
+
+  // Загальна кількість відгуків
+  const totalFeedback = feedback.good + feedback.neutral + feedback.bad;
 
   return (
     <div className={styles.container}>
       <h1>Sip Happens Café</h1>
       <Description />
-      <Options updateFeedback={updateFeedback} resetFeedback={resetFeedback} /> {/* ✅ Передаємо resetFeedback */}
+      <Options 
+        updateFeedback={updateFeedback} 
+        totalFeedback={totalFeedback} 
+        resetFeedback={resetFeedback} 
+      />
       <Feedback feedback={feedback} />
     </div>
   );

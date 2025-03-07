@@ -1,6 +1,6 @@
 import styles from "./Options.module.css";
 
-export default function Options({ updateFeedback, resetFeedback }) {
+export default function Options({ updateFeedback, totalFeedback, resetFeedback }) {
   return (
     <div className={styles.buttons}>
       <button className={styles.button} onClick={() => updateFeedback("good")}>
@@ -12,7 +12,11 @@ export default function Options({ updateFeedback, resetFeedback }) {
       <button className={styles.button} onClick={() => updateFeedback("bad")}>
         Bad
       </button>
-      <button className={styles.button} onClick={resetFeedback}>Reset</button>
+      {totalFeedback > 0 && (
+        <button className={styles.button} onClick={resetFeedback}>
+          Reset
+        </button>
+      )}
     </div>
   );
 }
